@@ -1,0 +1,253 @@
+<div class="container marginContainer">
+    <form [formGroup]="novaEmpresaForm" (submit)="save()">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="card-text h4"><small class="text-muted">Dados do solicitante</small></p>
+                
+                <div class="col-md-10">
+                    <label class="form-label fs-6"> 
+                        Responsavel pela empresa
+                        <span 
+                            class="danger" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-html="true" 
+                            title="Campo obrigatório"
+                        >*</span>
+                    </label>
+                    <input 
+                        type="text"
+                        class="form-control btn-sm" 
+                        placeholder="Responsavel" 
+                        formControlName="ds_responsavel">          
+                </div>
+
+                <div class="col-md-10">
+                    <label class="form-label fs-6"> 
+                        CPF 
+                        <span
+                            class="danger" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-html="true" 
+                            title="Campo obrigatório"
+                        >*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        class="form-control btn-sm" 
+                        mask="000.000.000-00" 
+                        placeholder="999.999.999-99" 
+                        formControlName="nu_cpf">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fs-6">
+                        Data nascimento 
+                        <span class="danger" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-html="true" 
+                            title="Campo obrigatório"
+                        >*</span>
+                    </label>
+                    <input 
+                        type="date" 
+                        class="form-control btn-sm" 
+                        formControlName="date_nascimento">
+                </div>
+                
+                <p class="card-text h4 marginDadosSolicitante">
+                    <small class="text-muted">Dados do solicitante</small>
+                </p>
+                
+                <div class="col-md-10">
+                    <label class="form-label fs-6">
+                        Nome fantasia
+                        <span 
+                            class="danger" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-html="true" 
+                            title="Campo obrigatório"
+                        >*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        class="form-control btn-sm" 
+                        placeholder="Nome fantasia" 
+                        formControlName="ds_nome_fantasia">
+                </div>
+
+                <div class="col-md-12">
+                    <label class="form-label fs-6">
+                        Escolha sua entidade de registro
+                        <span 
+                            class="danger" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-html="true" 
+                            title="Campo obrigatório"
+                        >*</span>
+                    </label>
+                    
+                    <div 
+                        class="form-check" 
+                        *ngFor="let entidadeRegistro of listEntidadeRegistro">
+                        <input 
+                            class="form-check-input"
+                            type="radio" 
+                            name="co_entidade_registro"
+                            [value]="entidadeRegistro.value"
+                            formControlName="co_entidade_registro">
+                        <label class="form-check-label">{{ entidadeRegistro.value }}</label>
+                    </div>
+
+                </div>
+
+                <div class="col-md-10 margin-bottonStyle">
+                    <label class="form-label fs-6">
+                        Natureza Jurídica
+                        <span 
+                            class="danger" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-html="true" 
+                            title="Campo obrigatório"
+                        >*</span>
+                    </label>
+                    <select 
+                        class="form-select form-select-sm" 
+                        aria-label=".form-select-sm example" 
+                        formControlName="co_natureza_juridica">
+                        <option selected>Selecione um opção</option>
+                        <option *ngFor="let naturesaJuridica of listNaturesaJuridica">
+                            {{ naturesaJuridica.name }}
+                        </option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <p class="card-text h4">
+                    <small class="text-muted">Endereço de empresa</small>
+                </p>
+
+                <div class="col-md-10">
+                    <label class="form-label fs-6">
+                        CEP: 
+                        <span 
+                            class="danger" 
+                            data-bs-toggle="tooltip"
+                            data-bs-html="true" 
+                            title="Campo obrigatório"
+                        >*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        class="form-control btn-sm" 
+                        placeholder="99999-99"
+                        id="cep"
+                        mask="00000-000"
+                        formControlName="co_cep"
+                        (blur)="getCep()"
+                    >
+                </div>
+
+                <div class="col-md-10">
+                    <label class="form-label fs-6">
+                        Endereço:
+                        <span 
+                            class="danger" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-html="true" 
+                            title="Campo obrigatório"
+                        >*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        class="form-control btn-sm" 
+                        formControlName="ds_logradouro">
+                </div>
+
+                <div class="col-md-10">
+                    <label class="form-label fs-6">
+                        Bairro:
+                        <span 
+                            class="danger" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-html="true" 
+                            title="Campo obrigatório"                            
+                        >*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        class="form-control btn-sm" 
+                        formControlName="ds_bairro">
+                </div>
+
+                <div class="col-md-10">
+                    <label class="form-label fs-6">
+                        Complemento:
+                        <span 
+                            class="danger" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-html="true" 
+                            title="Campo obrigatório"
+                        >*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        class="form-control btn-sm" 
+                        formControlName="ds_complemento">
+                </div>
+
+                <div class="col-md-10">
+                    <label class="form-label fs-6">
+                        Cidade:
+                        <span 
+                            class="danger" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-html="true" 
+                            title="Campo obrigatório"
+                        >*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        class="form-control btn-sm" 
+                        formControlName="co_municipio">
+                </div>
+                
+                <div class="col-md-10">
+                    <label class="form-label fs-6">
+                        Estado:
+                        <span 
+                            class="danger" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-html="true" 
+                            title="Campo obrigatório"
+                        >*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        class="form-control btn-sm" 
+                        formControlName="co_uf">
+                </div>
+
+                <div class="col-md-10">
+                    <label class="form-label fs-6">
+                        Número:
+                        <span 
+                            class="danger" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-html="true" 
+                            title="Campo obrigatório"
+                        >*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        class="form-control btn-sm" 
+                        formControlName="co_numero">
+                </div>
+                
+                <div class="col-md-10">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

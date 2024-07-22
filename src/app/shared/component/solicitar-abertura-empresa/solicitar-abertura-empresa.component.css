@@ -1,0 +1,16 @@
+div,
+.marginContainer {
+  margin-top: 0.5rem;
+}
+span,
+.danger {
+  color: red;
+}
+
+.marginDadosSolicitante {
+  margin-top: 1.5rem;
+}
+
+.margin-bottonStyle {
+  margin-bottom: 6rem;
+}
