@@ -1,8 +1,7 @@
 <div class="row">
-    <p>Abertura de Emrpesa</p>
-    <!-- <div class="col">
+    <div class="col">
         <app-listar-pedidos-empresa
-            [dataSource$]="listEmpresa"
+            [dataSource$]="listarEmpresa"
             (OnclickVisualizar)="getById($event)">
         </app-listar-pedidos-empresa>
     </div>
@@ -11,5 +10,5 @@
             [dataSource$]="detalheEmpresa"
             *ngIf="isDetail">
         </app-detalhes-pedidos-empresa>
-    </div> -->
+    </div>
 </div>
