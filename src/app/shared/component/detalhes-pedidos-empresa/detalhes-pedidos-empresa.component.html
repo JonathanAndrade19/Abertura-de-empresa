@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row margenDetalhe">
+        <div class="col-md-6">
+            <p class="card-text h5"><small class="text-muted">Detalhes do pedido</small></p>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+            <button 
+                type="button" 
+                class="btn btn-secondary btn-sm"
+                (click)="editarEmpresa(dataSource$.id)">
+                Editar
+            </button>
+        </div>        
+    </div>
+    
+    <ul class="list-group list-group-flush">
+        <li class="list-group nomeEmpresa">
+                {{ dataSource$.empresa.ds_nome_fantasia }}
+        </li>
+        <li class="list-group">
+            <span><b>Responsável: </b> {{ dataSource$.solicitante.ds_responsavel }}</span>
+        </li>
+        <li class="list-group">
+            <span><b>CPF: </b> {{ dataSource$.solicitante.nu_cpf }}</span>
+        </li>
+        <li class="list-group">
+            <span><b>Endereço:</b> {{ dataSource$.empresa.endereco.ds_logradouro }}</span>
+        </li>
+        <li class="list-group">
+            <span><b>Bairro:</b> {{ dataSource$.empresa.endereco.ds_bairro }} </span>
+        </li>
+        <li class="list-group">
+            <span><b>Cidade:</b> {{ dataSource$.empresa.endereco.co_municipio }} </span>
+        </li>
+        <li class="list-group">
+            <span><b>CEP:</b> {{ dataSource$.empresa.endereco.co_cep }} </span>
+        </li>
+        <li class="list-group">
+            <span><b>Complemento:</b> {{ dataSource$.empresa.endereco.ds_complemento }} </span>
+        </li>
+        <li class="list-group">
+            <span><b>UF:</b> {{ dataSource$.empresa.endereco.co_uf }} </span>
+        </li>
+        <li class="list-group">
+            <span><b>Número:</b> {{ dataSource$.empresa.endereco.co_numero }} </span>
+        </li>
+    </ul>
+</div>
