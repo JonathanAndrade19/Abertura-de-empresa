@@ -1,0 +1,14 @@
+.corDoHeader {
+    background-color: rgb(241, 241, 241);
+  }
+  
+  #tamanhoLogo {
+    height: 110px;
+  }
+  
+  #corDoTexto {
+    color: blue;
+    font-size: 22px;
+    font-weight: 800;
+  }
+  
