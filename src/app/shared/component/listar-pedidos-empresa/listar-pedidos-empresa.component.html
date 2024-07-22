@@ -1,0 +1,20 @@
+<div class="container" id="principal">
+    <div class="col-sm-12 d-grid gap-3">
+        <div class="card border-primary" *ngFor="let listEmp of dataSource$">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title">{{ listEmp.solicitante.ds_responsavel }}</h5>
+                    </div>
+                    <div class="col">
+                        <p class="card-text"><small class="text-muted">{{ listEmp.empresa.ds_nome_fantasia }}</small></p>
+                        <p>ID - {{ listEmp.id }}</p>
+                    </div>
+                    <div class="col"> 
+                        <button (click)="visualizar(listEmp.id)" class="btn btn-primary">Visualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
